@@ -28,7 +28,9 @@ const Navbar = () => {
 
         {/* RIGHT SIDE */}
         <div className="navbar__actions">
-          <Link to="/home" className="navbar__link">
+          <Link to="/home" className="navbar__link"
+           onClick={() => window.scrollTo(0, 0)}
+          >
             Home
           </Link>
 
