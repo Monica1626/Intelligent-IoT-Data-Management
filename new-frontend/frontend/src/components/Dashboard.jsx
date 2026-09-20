@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useRef,
 } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSensorData } from '../hooks/useSensorData.js';
 import { useFilteredData } from '../hooks/useFilteredData.js';
 import { useStreamNames } from '../hooks/useStreamNames.js';
@@ -18,10 +19,13 @@ import RelationshipChangesTimeline from './RelationshipChangesTimeline.jsx';
 import TimeRangePanel from './TimeRangePanel.jsx';
 import { runAnalysis } from '../services/analysisService.js';
 import AnalysisSummary from './AnalysisSummary.jsx';
+import { useApiResponseMonitor } from "../hooks/useApiResponseMonitor";
 
 const Dashboard = ({ datasetId }) => {
+  const navigate = useNavigate();
   // --- ALL HOOKS FIRST ---
   const { data: sensorData, loading, error, isEmpty, isValid } = useSensorData(datasetId);
+  const { serverStatus } = useApiResponseMonitor(datasetId); // while somebody is just looking at the normal dashboard, the measurements are already accumulating
 
   const data = useMemo(() => {
     if (!sensorData || !sensorData.rows) return [];
@@ -421,6 +425,9 @@ const Dashboard = ({ datasetId }) => {
         </div>
       </section>
 
+      
+
+
       {/* ✅ THIS IS THE FIXED SECTION THAT READS DIRECTLY FROM BACKEND ✅ */}
       <section className="dashboard-section stream-panel">
         <h3 className="section-title">Available Streams</h3>
@@ -677,10 +684,47 @@ const Dashboard = ({ datasetId }) => {
         streamLabels={streamLabels}
         startTime={visibleStartTime}
         endTime={visibleEndTime}
-        
-        
         />
+      </section>
 
+      
+      <section className="developer-status-bar">
+        <div className="developer-status-left">
+          <span
+            className={`server-status-dot ${
+              serverStatus === "good"
+                ? "status-good"
+                : serverStatus === "down"
+                  ? "status-down"
+                  : "status-checking"
+            }`}
+          />
+
+          <div className="developer-status-text">
+            <span className="developer-status-label">
+              System status
+            </span>
+
+            <span className="developer-status-value">
+              {serverStatus === "good"
+                ? "Operational"
+                : serverStatus === "down"
+                  ? "Unavailable"
+                  : "Checking..."}
+            </span>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          className="developer-metrics-link"
+          onClick={() =>
+            navigate(`/developer-metrics/${datasetId}`)
+          }
+        >
+          Developer metrics
+          <span aria-hidden="true">→</span>
+        </button>
       </section>
     </div>
   );

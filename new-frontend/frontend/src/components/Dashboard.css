@@ -1000,6 +1000,141 @@
   
 } 
 
+.developer-metrics-content {
+  margin-top: 1rem;
+}
+
+.api-metrics-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.api-chart-area {
+  min-width: 0;
+}
+
+.api-chart-area h3 {
+  margin-bottom: 0.4rem;
+}
+
+.api-chart-description {
+  margin: 0 0 0.8rem;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.api-response-chart {
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+}
+
+.api-insights-panel {
+  background: #f8fbff;
+  border: 1px solid #dbe7f5;
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.api-insights-panel h3 {
+  margin: 0 0 1rem;
+  color: #0f172a;
+}
+
+.api-insight-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.api-insight-item span {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.api-insight-item strong {
+  color: #1d4ed8;
+  font-size: 0.9rem;
+}
+
+.api-performance-message {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  background: #ecfdf5;
+  border-radius: 12px;
+}
+
+.api-performance-message strong {
+  color: #166534;
+}
+
+.api-performance-message p {
+  margin: 0.35rem 0 0;
+  color: #334155;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .api-metrics-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.developer-back-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  margin: 1rem 0 0 1rem;
+  background: #f1f5f9;
+  color: #0f172a;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.developer-back-btn:hover {
+  background: #e2e8f0;
+  transform: translateX(-2px);
+}
+
+
+.server-status-display {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1rem;
+}
+
+.server-status-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-good {
+  background: #22c55e;
+}
+
+.status-down {
+  background: #ef4444;
+}
+
+
+.developer-metrics-toggle {
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  background: #0f172a;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
 /* =========================================================
    INSIGHT CARD MINI GRAPHS
    ========================================================= */
@@ -1261,4 +1396,105 @@
   min-width: 8px;
   border-radius: 50%;
   flex-shrink: 0;
+}
+
+
+
+
+/* =========================================================
+   DEVELOPER STATUS
+   ========================================================= */
+
+.developer-status-bar {
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  margin-top: 1rem;
+  padding: 0.9rem 1.1rem;
+
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.developer-status-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.developer-status-text {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.developer-status-label {
+  color: #64748b;
+  font-size: 0.82rem;
+}
+
+.developer-status-value {
+  color: #0f172a;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.server-status-dot {
+  width: 9px;
+  height: 9px;
+  min-width: 9px;
+  border-radius: 50%;
+}
+
+.status-good {
+  background: #22c55e;
+}
+
+.status-down {
+  background: #ef4444;
+}
+
+.status-checking {
+  background: #94a3b8;
+}
+
+.developer-status-bar .developer-metrics-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding: 0.4rem 0.55rem;
+
+  border: none;
+  background: transparent;
+  box-shadow: none;
+
+  color: #2563eb;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.developer-status-bar .developer-metrics-link:hover {
+  background: #eff6ff;
+  border-radius: 6px;
+}
+
+@media (max-width: 640px) {
+  .developer-status-bar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .developer-status-text {
+    flex-wrap: wrap;
+  }
 }
