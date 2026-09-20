@@ -1134,6 +1134,7 @@
   color: #ffffff;
   font-weight: 700;
   cursor: pointer;
+}
 /* =========================================================
    INSIGHT CARD MINI GRAPHS
    ========================================================= */
@@ -1395,4 +1396,105 @@
   min-width: 8px;
   border-radius: 50%;
   flex-shrink: 0;
+}
+
+
+
+
+/* =========================================================
+   DEVELOPER STATUS
+   ========================================================= */
+
+.developer-status-bar {
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  margin-top: 1rem;
+  padding: 0.9rem 1.1rem;
+
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.developer-status-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.developer-status-text {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.developer-status-label {
+  color: #64748b;
+  font-size: 0.82rem;
+}
+
+.developer-status-value {
+  color: #0f172a;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.server-status-dot {
+  width: 9px;
+  height: 9px;
+  min-width: 9px;
+  border-radius: 50%;
+}
+
+.status-good {
+  background: #22c55e;
+}
+
+.status-down {
+  background: #ef4444;
+}
+
+.status-checking {
+  background: #94a3b8;
+}
+
+.developer-status-bar .developer-metrics-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding: 0.4rem 0.55rem;
+
+  border: none;
+  background: transparent;
+  box-shadow: none;
+
+  color: #2563eb;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.developer-status-bar .developer-metrics-link:hover {
+  background: #eff6ff;
+  border-radius: 6px;
+}
+
+@media (max-width: 640px) {
+  .developer-status-bar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .developer-status-text {
+    flex-wrap: wrap;
+  }
 }
